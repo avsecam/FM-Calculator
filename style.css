@@ -7,29 +7,210 @@ body {
   margin: 2rem;
 }
 
-body.theme1 {
-  background-color: #3a4764;
+body {
+  transition: 0.3s;
 }
-body.theme1 header {
+body header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   color: white;
+  margin-bottom: 1.3rem;
 }
-body.theme1 header h1 {
+body header h1 {
   text-transform: lowercase;
+  margin-top: 0;
 }
-body.theme1 header .themeChooserDiv {
+body header .themeChooserDiv {
   display: flex;
+  letter-spacing: 0.1rem;
 }
-body.theme1 header .themeChooserDiv h2 {
+body header .themeChooserDiv h2 {
   text-transform: uppercase;
+  font-size: 0.9rem;
+  margin-right: 2rem;
 }
-body.theme1 header .themeChooserDiv .themeChooser .themeChooserBottom {
-  width: 100%;
-  height: 1rem;
+body header .themeChooserDiv .themeChooser {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+body header .themeChooserDiv .themeChooser .themeChooserTop {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  top: -0.8rem;
+  padding-left: 11%;
+  width: 82%;
+  font-size: 0.8rem;
+}
+body header .themeChooserDiv .themeChooser .themeChooserBottom {
+  position: relative;
+  width: 5.3rem;
+  height: 1.8rem;
   background-color: #232c43;
   border-radius: 999px;
+  cursor: pointer;
+}
+body header .themeChooserDiv .themeChooser .themeChooserBottom .themeChooserKnob {
+  position: absolute;
+  top: 0.275rem;
+  border-radius: 100%;
+  width: 1.15rem;
+  height: 1.15rem;
+  transition: left 0.3s;
+}
+body main > * {
+  border-radius: 0.5rem;
+}
+body main .result {
+  text-align: right;
+  color: white;
+  font-size: 32px;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+}
+body main .input {
+  padding: 1.8rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 1.2rem;
+  height: 25rem;
+}
+body main .input button {
+  width: 100%;
+  height: 100%;
+  border: none;
+  font-size: 32px;
+  border-radius: 0.3rem;
+  padding-top: 0.4rem;
+}
+body main .input button.command {
+  color: white;
+  font-size: 1.3rem;
+}
+body main .input button.equals {
+  font-size: 2rem;
+}
+body main .input button.wide {
+  grid-column: span 2;
+  color: white;
+}
+
+.theme2 {
+  background-color: #e6e6e6;
+}
+.theme2 .themeChooserKnob {
+  left: 2rem !important;
+  background-color: #ca5502 !important;
+}
+.theme2 h1,
+.theme2 h2,
+.theme2 .themeChooserTop,
+.theme2 .result,
+.theme2 button {
+  color: #35352c !important;
+}
+.theme2 .themeChooserBottom,
+.theme2 .input {
+  background-color: #d1cccc !important;
+}
+.theme2 .result {
+  background-color: #ededed;
+}
+.theme2 button {
+  background-color: #e5e4e1 !important;
+  box-shadow: 0 0.25rem 0 0 #a69d91 !important;
+}
+.theme2 .command,
+.theme2 .equals {
+  color: white !important;
+}
+.theme2 .command {
+  background-color: #377f86 !important;
+  box-shadow: 0 0.25rem 0 0 #1b5f65 !important;
+}
+.theme2 .equals {
+  background-color: #ca5502 !important;
+  box-shadow: 0 0.25rem 0 0 #893901 !important;
+}
+
+.theme3 {
+  background-color: #160628;
+}
+.theme3 .themeChooserKnob {
+  left: 3.7rem !important;
+  background-color: #00e0d1 !important;
+}
+.theme3 h1,
+.theme3 h2,
+.theme3 .themeChooserTop,
+.theme3 .result,
+.theme3 button {
+  color: #ffe53d !important;
+}
+.theme3 .themeChooserBottom,
+.theme3 .input,
+.theme3 .result {
+  background-color: #1d0934 !important;
+}
+.theme3 button {
+  background-color: #341c4f !important;
+  box-shadow: 0 0.25rem 0 0 #871c9c !important;
+}
+.theme3 .command,
+.theme3 .equals {
+  color: white !important;
+}
+.theme3 .command {
+  background-color: #58077d !important;
+  box-shadow: 0 0.25rem 0 0 #bc15f4 !important;
+}
+.theme3 .equals {
+  color: #1b2428 !important;
+  background-color: #00e0d1 !important;
+  box-shadow: 0 0.25rem 0 0 #6cf9f2 !important;
+}
+
+.theme1 {
+  background-color: #3a4764;
+}
+.theme1 .themeChooserKnob {
+  left: 0.45rem !important;
+  background-color: #d03f2f;
+}
+.theme1 h1,
+.theme1 h2,
+.theme1 .themeChooserTop {
+  color: white;
+}
+.theme1 button {
+  color: #444b5a;
+}
+.theme1 .themeChooserBottom,
+.theme1 .input {
+  background-color: #232c43;
+}
+.theme1 .result {
+  color: white;
+  background-color: #182034;
+}
+.theme1 button {
+  background-color: #eae3dc;
+  box-shadow: 0 0.25rem 0 0 #b4a597;
+}
+.theme1 .command,
+.theme1 .equals {
+  color: white !important;
+}
+.theme1 .command {
+  background-color: #637097;
+  box-shadow: 0 0.25rem 0 0 #3a4764;
+}
+.theme1 .equals {
+  background-color: #d03f2f;
+  box-shadow: 0 0.25rem 0 0 #93261a;
 }
 
 /*# sourceMappingURL=style.css.map */

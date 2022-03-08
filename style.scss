@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap');
 
+$numberFontSize: 32px;
+$buttonHeight: 0.25rem;
+
 // Theme 1
 
 $blue300: hsl(225, 21%, 49%); // key bg
@@ -17,6 +20,41 @@ $orange200: hsl(28, 16%, 65%); // key shadow
 $gray: hsl(221, 14%, 31%); // text
 $white: hsl(0, 0, 100%);
 
+// Theme 2
+
+$gray100: hsl(0, 0%, 90%); // main bg
+$gray200: hsl(0, 0%, 93%); // screen bg
+$gray300: hsl(0, 5%, 81%); // toggle, keypad bg
+
+$cyan400: hsl(185, 42%, 37%); // key bg
+$cyan500: hsl(185, 58%, 25%); // key shadow
+
+$orange400: hsl(25, 98%, 40%); // key bg, knob
+$orange500: hsl(25, 99%, 27%); // key shadow
+
+$yellow100: hsl(45, 7%, 89%); // key bg
+$yellow200: hsl(35, 11%, 61%); // key shadow
+
+$yellow700: hsl(60, 10%, 19%); // text
+
+// Theme 3
+
+$violet900: hsl(268, 75%, 9%); // main bg
+$violet800: hsl(268, 71%, 12%); // screen, toggle, keypad bg
+
+$violet400: hsl(281, 89%, 26%); // key bg
+$violet200: hsl(285, 91%, 52%); // key shadow
+
+$cyan200: hsl(176, 100%, 44%); // key bg, knob
+$cyan100: hsl(177, 92%, 70%); // key shadow
+
+$magenta900: hsl(268, 47%, 21%); // key bg
+$magenta500: hsl(290, 70%, 36%); // key shadow
+
+$yellow400: hsl(52, 100%, 62%); // text
+$black: hsl(198, 20%, 13%);
+
+
 * {
 	font-family: "Spartan", sans-serif;	
 }
@@ -25,32 +63,217 @@ body {
 	margin: 2rem;
 }
 
-body.theme1 {
-	background-color: $blue500;
+body {
+	transition: 0.3s;
 	header {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 		color: $white;
+		margin-bottom: 1.3rem;
 		h1 {
 			text-transform: lowercase;
+			margin-top: 0;
 		}
 		.themeChooserDiv {
 			display: flex;
+			letter-spacing: 0.1rem;
 			h2 {
 				text-transform: uppercase;
+				font-size: 0.9rem;
+				margin-right: 2rem;
 			}
 			.themeChooser {
+				position: relative;
+				display: flex;
+				align-items: center;
 				.themeChooserTop {
-
+					position: absolute;
+					display: flex;
+					justify-content: space-between;
+					top: -0.8rem;
+					padding-left: 11%;
+					width: 82%;
+					font-size: 0.8rem;
 				}
 				.themeChooserBottom {
-					width: 100%;
-					height: 1rem;
+					position: relative;
+					width: 5.3rem;
+					height: 1.8rem;
 					background-color: $blue600;
 					border-radius: 999px;
+					cursor: pointer;
+					.themeChooserKnob {
+						position: absolute;
+						top: 0.275rem;
+						border-radius: 100%;
+						width: 1.15rem;
+						height: 1.15rem;
+						transition: left 0.3s;
+					}
 				}
 			}
 		}
+	}
+
+	main {
+		& > * {
+			border-radius: 0.5rem;
+		}
+
+		.result {
+			text-align: right;
+			color: $white;
+			font-size: $numberFontSize;
+			margin-bottom: 1.5rem;
+			padding: 1.5rem;
+		}
+
+		.input {
+			padding: 1.8rem;
+			display: grid;
+			grid-template-columns: repeat(4, 1fr);
+			grid-template-rows: repeat(5, 1fr);
+			gap: 1.2rem;
+			height: 25rem;
+
+			button {
+				width: 100%;
+				height: 100%;
+				border: none;
+				font-size: $numberFontSize;
+				border-radius: 0.3rem;
+				padding-top: 0.4rem;
+
+				&.command {
+					color: $white;
+					font-size: 1.3rem;
+				}
+
+				&.equals {
+					font-size: 2rem;
+				}
+
+				&.wide {
+					grid-column: span 2;
+					color: $white;
+				}
+			}
+		}
+	}
+}
+
+.theme2 {
+	.themeChooserKnob {
+		left: 2rem !important;
+		background-color: $orange400 !important;
+	}
+	background-color: $gray100;
+	h1,
+	h2,
+	.themeChooserTop,
+	.result,
+	button {
+		color: $yellow700 !important;
+	}
+	.themeChooserBottom,
+	.input {
+		background-color: $gray300 !important;
+	}
+	.result {
+		background-color: $gray200;
+	}
+	button {
+		background-color: $yellow100 !important;
+		box-shadow: 0 $buttonHeight 0 0 $yellow200 !important;
+	}
+	.command,
+	.equals {
+		color: $white !important;
+	}
+	.command {
+		background-color: $cyan400 !important;
+		box-shadow: 0 $buttonHeight 0 0 $cyan500 !important;
+	}
+	.equals {
+		background-color: $orange400 !important;
+		box-shadow: 0 $buttonHeight 0 0 $orange500 !important;
+	}
+}
+
+.theme3 {
+	.themeChooserKnob {
+		left: 3.7rem !important;
+		background-color: $cyan200 !important;
+	}
+	background-color: $violet900;
+	h1,
+	h2,
+	.themeChooserTop,
+	.result,
+	button {
+		color: $yellow400 !important;
+	}
+	.themeChooserBottom,
+	.input,
+	.result {
+		background-color: $violet800 !important;
+	}
+	button {
+		background-color: $magenta900 !important;
+		box-shadow: 0 $buttonHeight 0 0 $magenta500 !important;
+	}
+	.command,
+	.equals {
+		color: $white !important;
+	}
+	.command {
+		background-color: $violet400 !important;
+		box-shadow: 0 $buttonHeight 0 0 $violet200 !important;
+	}
+	.equals {
+		color: $black !important;
+		background-color: $cyan200 !important;
+		box-shadow: 0 $buttonHeight 0 0 $cyan100 !important;
+	}
+}
+
+.theme1 {
+	.themeChooserKnob {
+		left: 0.45rem !important;
+		background-color: $red400;
+	}
+	background-color: $blue500;
+	h1,
+	h2,
+	.themeChooserTop {
+		color: $white;
+	}
+	button {
+		color: $gray;
+	}
+	.themeChooserBottom,
+	.input {
+		background-color: $blue600;
+	}
+	.result {
+		color: $white;
+		background-color: $blue700;
+	}
+	button {
+		background-color: $orange100;
+		box-shadow: 0 $buttonHeight 0 0 $orange200;
+	}
+	.command,
+	.equals {
+		color: $white !important;
+	}
+	.command {
+		background-color: $blue300;
+		box-shadow: 0 $buttonHeight 0 0 $blue500;
+	}
+	.equals {
+		background-color: $red400;
+		box-shadow: 0 $buttonHeight 0 0 $red500;
 	}
 }

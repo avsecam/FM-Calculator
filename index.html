@@ -34,30 +34,45 @@
   <main>
     <div class="result">399,981</div>
     <div class="input">
-      <button class="normal"></button>
-      <button class="normal"></button>
-      <button class="normal"></button>
-      <button class="command"></button>
+      <button class="normal">7</button>
+      <button class="normal">8</button>
+      <button class="normal">9</button>
+      <button class="command">DEL</button>
       
-      <button class="normal"></button>
-      <button class="normal"></button>
-      <button class="normal"></button>
-      <button class="normal"></button>
+      <button class="normal">4</button>
+      <button class="normal">5</button>
+      <button class="normal">6</button>
+      <button class="normal">+</button>
       
-      <button class="normal"></button>
-      <button class="normal"></button>
-      <button class="normal"></button>
-      <button class="normal"></button>
+      <button class="normal">1</button>
+      <button class="normal">2</button>
+      <button class="normal">3</button>
+      <button class="normal">-</button>
       
-      <button class="normal"></button>
-      <button class="normal"></button>
-      <button class="normal"></button>
-      <button class="normal"></button>
+      <button class="normal">.</button>
+      <button class="normal">0</button>
+      <button class="normal">/</button>
+      <button class="normal">x</button>
       
-      <button class="command wide"></button>
-      <button class="equals wide"></button>
+      <button class="command wide">RESET</button>
+      <button class="equals wide">=</button>
     </div>
   </main>
 
+  <script>
+    let themeChooser = document.querySelector(".themeChooserBottom")
+    let body = document.body
+
+    themeChooser.addEventListener("click", () => {
+      if (body.classList.contains("theme1")) {
+        body.classList.replace("theme1", "theme2")
+      } else if (body.classList.contains("theme2")) {
+        body.classList.replace("theme2", "theme3")
+      } else {
+        body.classList.replace("theme3", "theme1")
+      }
+    })
+
+  </script>
 </body>
 </html>
