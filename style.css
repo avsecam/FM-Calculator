@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap");
+* {
+  font-family: "Spartan", sans-serif;
+}
+
+body {
+  margin: 2rem;
+}
+
+body.theme1 {
+  background-color: #3a4764;
+}
+body.theme1 header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+}
+body.theme1 header h1 {
+  text-transform: lowercase;
+}
+body.theme1 header .themeChooserDiv {
+  display: flex;
+}
+body.theme1 header .themeChooserDiv h2 {
+  text-transform: uppercase;
+}
+body.theme1 header .themeChooserDiv .themeChooser .themeChooserBottom {
+  width: 100%;
+  height: 1rem;
+  background-color: #232c43;
+  border-radius: 999px;
+}
+
+/*# sourceMappingURL=style.css.map */
