@@ -32,7 +32,7 @@
   </header>
 
   <main>
-    <div class="result">399,981</div>
+    <div class="result"></div>
     <div class="input">
       <button class="normal">7</button>
       <button class="normal">8</button>
@@ -60,6 +60,7 @@
   </main>
 
   <script>
+    // THEME CHANGE
     let themeChooser = document.querySelector(".themeChooserBottom")
     let body = document.body
 
@@ -72,6 +73,98 @@
         body.classList.replace("theme3", "theme1")
       }
     })
+
+
+    // CALCULATOR
+    const REGEX_NUMBER = /\d/
+    const REGEX_COMMA = /\,/g
+    let previousOperand, operation
+    let isFloat = false
+    let hasJustComputed = false
+
+    let result = document.querySelector(".result")
+    result.style.height = (result.innerText === "") ? "2.35rem" : "";
+
+    let normalButtons = document.querySelectorAll("button.normal")
+    normalButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        if (!button.innerText.search(REGEX_NUMBER)) {
+          if (button.innerText === "0" && result.innerText === "") return
+          if (hasJustComputed || result.innerText === "+" || result.innerText === "-" || result.innerText === "x" || result.innerText === "/") result.innerText = ""
+          hasJustComputed = false
+          result.innerText += button.innerText
+          separateResultByCommas()
+        } else if (button.innerText.search(REGEX_NUMBER)) {
+          if (button.innerText === ".") {
+            if (!isFloat) {
+              result.innerText += button.innerText
+              isFloat = true
+            }
+          } else {
+            operation = button.innerText
+            previousOperand = removeCommas(result.innerText)
+            result.innerText = operation
+            isFloat = false
+          }
+        }
+      })
+    })
+
+    let specialButtons = document.querySelectorAll("button.command, button.equals")
+    specialButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        if (button.innerText === "DEL") {
+          if (result.innerText.slice(-1) === ".") {
+            isFloat = false
+          }
+          result.innerText = result.innerText.slice(0, -1)
+        } else if (button.innerText === "RESET") {
+          operation = null
+          previousOperand = null
+          result.innerText = ""
+        } else { // EQUALS
+          compute()
+        }
+      })
+    })    
+
+    function compute() {
+      if (previousOperand && operation && result.innerText) {
+        hasJustComputed = true
+        switch(operation) {
+          case "+":
+            result.innerText = Number(previousOperand) + Number(result.innerText)
+            break
+          case "-":
+            result.innerText = Number(previousOperand) - Number(result.innerText)
+            break
+          case "x":
+            result.innerText = Number(previousOperand) * Number(result.innerText)
+            break
+          case "/":
+            result.innerText = Number(previousOperand) / Number(result.innerText)
+            break
+          default:
+            return
+        }
+      }
+    }
+  
+    function separateResultByCommas() {
+      let wholeNumberPart = result.innerText
+      let floatPart = ""
+      let splitNumber = result.innerText.split(".")
+      if (splitNumber.length > 1) {
+        wholeNumberPart = splitNumber[0]
+        floatPart = "." + splitNumber[1]
+      }
+      wholeNumberPart = removeCommas(wholeNumberPart)
+      result.innerText = Number(wholeNumberPart).toLocaleString() + floatPart
+    }
+
+    function removeCommas(result) {
+      return result.replace(/\,/g, '')
+    }
 
   </script>
 </body>

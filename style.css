@@ -85,6 +85,7 @@ body main .input button {
   font-size: 32px;
   border-radius: 0.3rem;
   padding-top: 0.4rem;
+  cursor: pointer;
 }
 body main .input button.command {
   color: white;
